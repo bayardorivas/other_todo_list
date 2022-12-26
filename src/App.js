@@ -3,6 +3,7 @@ import TaskCreator from "./components/TaskCreator.jsx";
 import { TaskTable } from "./components/TaskTable.jsx";
 import "./App.css";
 import { VisibilityControl } from "./components/VisiibilityControl.jsx";
+import { Container } from "./components/Container.jsx";
 
 function App() {
   const [taskItems, setTaskItems] = useState([]);
@@ -38,15 +39,14 @@ function App() {
 
   return (
     <main className="App">
-      <div className="container col-md-4 offset-md-4">
-        <TaskCreator createNewTask={createNewTask} />
+      <Container>
+      <TaskCreator createNewTask={createNewTask} />
         <TaskTable tasks={taskItems} toggleTask={toggleTask} />
         <VisibilityControl
           isChecked={showCompleted}
           setShowCompleted={(checked) => setShowCompleted(checked)}
           cleanTasks={cleanTasks}
         />
-
         {showCompleted && (
           <TaskTable
             tasks={taskItems}
@@ -54,7 +54,7 @@ function App() {
             showCompleted={showCompleted}
           />
         )}
-      </div>
+      </Container>
     </main>
   );
 }
